@@ -1,0 +1,23 @@
+name: ci-wf
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+jobs:
+  ci-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome step
+        run: echo "welcome to the Gh ACTIONS"
+      - name: Checkout Repositry
+        uses: actions/checkout@v4
+      - name: Repositry Information
+        run: |
+          echo "Repositry name : ${{github.repositry}}"
+          echo "Type of Evnet : ${{github.event_name}}"
+          git -v
+          git branch
+          git log
